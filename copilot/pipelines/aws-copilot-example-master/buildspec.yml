@@ -22,9 +22,9 @@ phases:
       - export COLOR="false"
       - pipeline=$(cat $CODEBUILD_SRC_DIR/copilot/pipelines/aws-copilot-example-master/manifest.yml | ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))')
       # added by me 
-      - echo pipeline 
+      - echo $pipeline 
       - pl_envs=$(echo $pipeline | jq -r '.stages[].name')
-      - echo pl_envs
+      - echo $pl_envs
       # Find all the local services in the workspace.
       - svc_ls_result=$(./copilot-linux svc ls --local --json)
       - svc_list=$(echo $svc_ls_result | jq '.services')
